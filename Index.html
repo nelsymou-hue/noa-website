@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOA — Nouvelle Odyssée d'Ambition</title>
+  <link href="https://fonts.bunny.net/css?family=lora:400,400i,500,600,700|playfair-display:400,400i,500,600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+```
+body {
+  font-family: 'Lora', serif;
+  background: linear-gradient(135deg, #0D1B3E 0%, #1A2F5E 100%);
+  color: #FFFFFF;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATED BACKGROUND ── */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.animated-bg .base {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D1B3E 0%, #1A2F5E 100%);
+}
+.orb1 {
+  position: absolute;
+  top: 15%; left: 10%;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,50,132,0.35) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: orbDrift1 10s ease-in-out infinite alternate;
+}
+.orb2 {
+  position: absolute;
+  bottom: 10%; right: 5%;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214,204,232,0.25) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: orbDrift2 14s ease-in-out infinite alternate;
+}
+@keyframes orbDrift1 {
+  0% { transform: translate(0,0) scale(1); }
+  100% { transform: translate(40px,-30px) scale(1.15); }
+}
+@keyframes orbDrift2 {
+  0% { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-35px,25px) scale(1.1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.6s ease-out forwards; }
+.delay-1 { animation-delay: 0.3s; opacity: 0; }
+.delay-2 { animation-delay: 0.5s; opacity: 0; }
+.delay-3 { animation-delay: 0.7s; opacity: 0; }
+
+/* ── LAYOUT ── */
+.relative { position: relative; }
+.z10 { position: relative; z-index: 10; }
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nav-logo img { height: 48px; width: auto; display: block; }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-btn {
+  font-family: 'Lora', serif;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: rgba(123,50,132,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(215,215,228,0.55);
+  border-radius: 20px;
+  padding: 0.55rem 1.2rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.nav-btn:hover { background: rgba(123,50,132,0.95); }
+
+/* ── GLASS CARD ── */
+.glass-card {
+  background: rgba(15,20,50,0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(180,150,255,0.25);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(100,60,200,0.3);
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180,150,255,0.20), transparent);
+}
+
+/* ── GLASS BTN ── */
+.glass-btn {
+  display: block;
+  width: 88%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(123,50,132,0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(176,143,208,0.40);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(123,50,132,0.50), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.glass-btn:hover {
+  background: rgba(123,50,132,0.90);
+  box-shadow: 0 0 30px rgba(123,50,132,0.70);
+}
+.glass-btn-outline {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  background: rgba(123,50,132,0.10);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(215,215,228,0.35);
+  border-radius: 25px;
+  padding: 0.75rem 1.8rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.glass-btn-outline:hover { background: rgba(123,50,132,0.20); color: #fff; }
+
+/* ── SECTIONS ── */
+section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+
+h1 { font-family: 'Playfair Display', serif; font-weight: 400; line-height: 1.15; }
+h2 { font-family: 'Playfair Display', serif; font-weight: 400; }
+h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+#hero img.logo { width: 160px; margin: 0 auto 1rem; display: block; }
+#hero .subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+#hero .divider {
+  width: 64px; height: 1px;
+  background: linear-gradient(90deg, transparent, #7B3284, #C490C8, transparent);
+  margin: 0 auto 2rem;
+}
+#hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 1.2rem; }
+#hero p.desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
+.beta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  background: rgba(123,50,132,0.25);
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2.5rem;
+}
+.hero-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+/* ── ABOUT SECTION ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.feature-list { display: flex; flex-direction: column; gap: 1rem; }
+.feature-item { display: flex; gap: 0.8rem; align-items: flex-start; }
+.feature-item .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.feature-item .title { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #fff; margin-bottom: 0.2rem; }
+.feature-item .desc { font-size: 0.78rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+/* ── STEPS ── */
+.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.step-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #7B3284; margin-bottom: 0.6rem; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #fff; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.78rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+
+/* ── ROLE TABS ── */
+.role-tabs {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+}
+.role-tab {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  padding: 0.55rem 1.3rem;
+  border-radius: 50px;
+  border: 1.5px solid rgba(215,215,228,0.25);
+  background: rgba(13,27,62,0.5);
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+.role-tab:hover { color: #fff; border-color: rgba(215,215,228,0.55); background: rgba(123,50,132,0.25); }
+.role-tab.violet { border-color: rgba(123,50,132,0.6); color: #C490C8; background: rgba(123,50,132,0.20); }
+.role-tab.violet:hover { background: rgba(123,50,132,0.40); color: #fff; }
+.role-tab.green { border-color: rgba(74,124,89,0.6); color: #7ec89a; background: rgba(74,124,89,0.15); }
+.role-tab.green:hover { background: rgba(74,124,89,0.35); color: #fff; }
+.role-tab.teal { border-color: rgba(17,103,106,0.6); color: #5cc8cb; background: rgba(17,103,106,0.15); }
+.role-tab.teal:hover { background: rgba(17,103,106,0.35); color: #fff; }
+
+/* ── ROLE CARDS ── */
+.roles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.role-card {
+  border-radius: 18px;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.role-card.violet { background: rgba(123,50,132,0.20); border: 1px solid rgba(123,50,132,0.40); }
+.role-card.green { background: rgba(74,124,89,0.20); border: 1px solid rgba(74,124,89,0.40); }
+.role-card.teal { background: rgba(17,103,106,0.20); border: 1px solid rgba(17,103,106,0.40); }
+.role-card .role-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+.role-card h3 { font-size: 1rem; }
+.role-card .role-desc { font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 1rem; }
+.role-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.role-card li { font-size: 0.78rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+.bullet-violet { color: #7B3284; }
+.bullet-green { color: #4a7c59; }
+.bullet-teal { color: #11676A; }
+
+/* ── VALEURS ── */
+.valeurs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.valeur-card {
+  text-align: center;
+  border-radius: 18px;
+  padding: 1.2rem;
+  background: rgba(123,50,132,0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(123,50,132,0.35);
+}
+.valeur-card .icon { font-size: 1.5rem; margin-bottom: 0.6rem; display: block; }
+.valeur-card .title { font-family: 'Playfair Display', serif; font-size: 0.88rem; color: #fff; margin-bottom: 0.4rem; }
+.valeur-card .desc { font-size: 0.72rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+/* ── CONTACT ── */
+.contact-form-box {
+  background: rgba(61,31,94,0.3);
+  border: 1px solid rgba(123,50,132,0.5);
+  border-radius: 18px;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-group label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(180,150,255,0.9); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(15,20,50,0.55);
+  border: 1px solid rgba(160,130,240,0.35);
+  backdrop-filter: blur(10px);
+  color: #eef0f8;
+  font-family: 'Lora', serif;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+}
+.form-group select option { background: #0D1B3E; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: rgba(123,50,132,0.8); }
+.form-group textarea { resize: none; min-height: 110px; }
+
+.form-success { display: none; text-align: center; padding: 2rem; }
+.form-success .check { font-size: 2rem; color: #C490C8; display: block; margin-bottom: 0.8rem; }
+.form-success p { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+.form-success small { font-size: 0.8rem; color: rgba(255,255,255,0.5); display: block; margin-top: 0.4rem; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+footer .divider {
+  width: 64px; height: 1px;
+  background: linear-gradient(90deg, transparent, #7B3284, transparent);
+  margin: 0 auto 1.5rem;
+}
+footer p { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 0.3rem; }
+footer .footer-logo img { height: 40px; margin: 0 auto 1.5rem; display: block; }
+footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
+footer .footer-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer .footer-links a:hover { color: rgba(196,144,200,0.9); }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C490C8;
+  margin-bottom: 0.8rem;
+}
+.section-divider {
+  width: 48px; height: 1px;
+  background: linear-gradient(to right, #7B3284, transparent);
+  margin-bottom: 1.5rem;
+}
+.text-center { text-align: center; }
+.text-center .section-divider { margin: 0 auto 1.5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  nav { padding: 1rem; }
+  .nav-links { display: none; }
+  .two-col, .steps-grid, .roles-grid, .valeurs-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer .footer-links { flex-direction: column; gap: 1rem; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+
+<div class="animated-bg">
+  <div class="base"></div>
+  <div class="orb1"></div>
+  <div class="orb2"></div>
+</div>
+
+<!-- NAV -->
+
+<div class="z10">
+  <nav>
+    <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="nav-logo"><img src="data:image/png;base64,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" alt="NOA" /></a>
+    <ul class="nav-links">
+      <li><a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">À propos</a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Comment ça marche</a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('roles').scrollIntoView({behavior:'smooth'})">Pour qui</a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
+    </ul>
+    <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="nav-btn">Nous contacter</a>
+  </nav>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <img class="logo fade-up" src="data:image/png;base64,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" alt="NOA" />
+    <p class="subtitle fade-up delay-1">Nouvelle Odyssée d'Ambition</p>
+    <div class="divider fade-up delay-1"></div>
+    <h1 class="fade-up delay-2">La 1<sup>re</sup> plateforme hybride<br>alternance &amp; stage<br>à La Réunion.</h1>
+    <p class="desc fade-up delay-2">NOA connecte les alternants et stagiaires avec les entreprises qui leur correspondent vraiment — grâce à un algorithme de matching qui va au-delà du CV.</p>
+    <span class="beta-badge fade-up delay-3">✦ Bêta en cours · La Réunion 974</span>
+    <div class="role-tabs fade-up delay-3" style="justify-content:center; margin-top:0.5rem;">
+      <a href="javascript:void(0)" onclick="document.getElementById('pourquoi-alternant').scrollIntoView({behavior:'smooth'})" class="role-tab violet">🎓 Alternant · Stagiaire</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('pourquoi-entreprise').scrollIntoView({behavior:'smooth'})" class="role-tab green">🏢 Entreprise</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('pourquoi-cfa').scrollIntoView({behavior:'smooth'})" class="role-tab teal">🏫 CFA · École · Université</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="two-col">
+      <div>
+        <p class="section-label">Notre mission</p>
+        <h2 style="font-size:1.5rem; margin-bottom:1rem;">Bien plus qu'un simple annuaire</h2>
+        <div class="section-divider"></div>
+        <p style="font-size:0.9rem; color:rgba(255,255,255,0.8); line-height:1.8;">
+          NOA est une plateforme de matching pensée pour le marché réunionnais. Elle combine un algorithme objectif (compétences, secteur, localisation) et une dimension subjective (personnalité, valeurs, ambitions) pour créer des connexions qui durent.<br><br>
+          Parce qu'une alternance ou un stage réussi, c'est d'abord une rencontre humaine.
+        </p>
+      </div>
+      <div class="glass-card">
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="icon">🎯</span>
+            <div><div class="title">Matching personnalisé</div><div class="desc">Un algorithme 40/60 objectif-subjectif, adapté à chaque profil.</div></div>
+          </div>
+          <div class="feature-item">
+            <span class="icon">🧠</span>
+            <div><div class="title">Quiz de personnalité</div><div class="desc">4 quiz pour mieux te connaître et booster tes matchs.</div></div>
+          </div>
+          <div class="feature-item">
+            <span class="icon">📄</span>
+            <div><div class="title">CV analysé par algorithme</div><div class="desc">Extraction automatique des compétences depuis votre CV en minutes.</div></div>
+          </div>
+          <div class="feature-item">
+            <span class="icon">🏝️</span>
+            <div><div class="title">100% local</div><div class="desc">Conçu pour La Réunion, ses CFA, ses entreprises, sa réalité.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how">
+    <h2 class="text-center" style="font-size:1.5rem; margin-bottom:2.5rem;">Trois étapes, un match.</h2>
+    <div class="steps-grid">
+      <div class="glass-card text-center">
+        <div class="step-num">01</div>
+        <div class="step-title">Crée ton profil</div>
+        <div class="step-desc">Importe ton CV, réponds au quiz de personnalité et précise tes ambitions.</div>
+      </div>
+      <div class="glass-card text-center">
+        <div class="step-num">02</div>
+        <div class="step-title">Découvre tes matchs</div>
+        <div class="step-desc">L'algorithme analyse les entreprises et propose celles qui correspondent à ton profil.</div>
+      </div>
+      <div class="glass-card text-center">
+        <div class="step-num">03</div>
+        <div class="step-title">Lance l'aventure</div>
+        <div class="step-desc">Prends contact, postule, et mets toutes les chances de ton côté pour démarrer ton alternance ou ton stage.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+
+  <section id="roles">
+    <h2 class="text-center" style="font-size:1.5rem; margin-bottom:2.5rem;">Trois mondes, une plateforme.</h2>
+    <div class="roles-grid">
+      <div class="role-card violet">
+        <div class="role-header"><span>🎓</span><h3>Alternant·e / Stagiaire</h3></div>
+        <p class="role-desc">Tu prépares un diplôme en alternance ou tu cherches un stage — et tu veux trouver une entreprise qui te ressemble vraiment — quel que soit ton parcours.</p>
+        <ul>
+          <li><span class="bullet-violet">✦</span> Quiz de personnalité</li>
+          <li><span class="bullet-violet">✦</span> Matchs basés sur tes vraies ambitions</li>
+          <li><span class="bullet-violet">✦</span> Scores expliqués</li>
+          <li><span class="bullet-violet">✦</span> Accompagnement rassurant</li>
+        </ul>
+      </div>
+      <div class="role-card green">
+        <div class="role-header"><span>🏢</span><h3>Entreprise</h3></div>
+        <p class="role-desc">Tu accueilles des alternants ou des stagiaires — Des profils qualifiés et motivés, sans trier des candidatures incompatibles.</p>
+        <ul>
+          <li><span class="bullet-green">✦</span> Profils pré-qualifiés</li>
+          <li><span class="bullet-green">✦</span> Compétences ET personnalité</li>
+          <li><span class="bullet-green">✦</span> Abonnements adaptés</li>
+          <li><span class="bullet-green">✦</span> Interface simple</li>
+        </ul>
+      </div>
+      <div class="role-card teal">
+        <div class="role-header"><span>🎓</span><h3>CFA / École</h3></div>
+        <p class="role-desc">Tu formes les alternants de demain — Suis leur progression, connecte-les aux entreprises partenaires et pilote tes placements.</p>
+        <ul>
+          <li><span class="bullet-teal">✦</span> Suivi des alternants en temps réel</li>
+          <li><span class="bullet-teal">✦</span> Mise en relation avec les entreprises</li>
+          <li><span class="bullet-teal">✦</span> Tableau de bord établissement</li>
+          <li><span class="bullet-teal">✦</span> Organisation d'événements</li>
+          <li><span class="bullet-teal">✦</span> 100% adapté à La Réunion</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+
+  <section id="valeurs">
+    <h2 class="text-center" style="font-size:1.5rem; margin-bottom:2.5rem;">Notre identité</h2>
+    <div class="valeurs-grid">
+      <div class="valeur-card"><span class="icon">🎯</span><div class="title">Pertinence</div><div class="desc">Un matching qui va au-delà du CV</div></div>
+      <div class="valeur-card"><span class="icon">🏝️</span><div class="title">Proximité</div><div class="desc">100% pensé pour La Réunion 974</div></div>
+      <div class="valeur-card"><span class="icon">🔒</span><div class="title">Confiance</div><div class="desc">Vos données protégées, vos intérêts défendus</div></div>
+      <div class="valeur-card"><span class="icon">🚀</span><div class="title">Ambition</div><div class="desc">Chacun mérite une vraie chance</div></div>
+    </div>
+  </section>
+
+  <!-- POURQUOI NOA — ENTREPRISES -->
+
+  <section id="pourquoi-entreprise">
+    <div class="text-center" style="margin-bottom:2.5rem;">
+      <p class="section-label">Entreprises</p>
+      <h2 style="font-size:1.5rem; margin-bottom:0.5rem;">Pourquoi accueillir un alternant ou un stagiaire via NOA<br>plutôt qu'ailleurs ?</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); max-width:520px; margin:0 auto;">Indeed, LinkedIn, les jobboards gratuits… ils existent. Mais ils ne travaillent pas pour vous.</p>
+    </div>
+
+```
+<!-- Chiffre choc -->
+<div class="glass-card" style="text-align:center; margin-bottom:2rem; background:rgba(61,31,94,0.35); border-color:rgba(123,50,132,0.5);">
+  <p style="font-family:'Playfair Display',serif; font-size:3rem; color:#C490C8; line-height:1;">80%</p>
+  <p style="font-size:0.88rem; color:rgba(255,255,255,0.75); margin-top:0.5rem;">des candidatures reçues hors NOA sont hors-cible.<br>Vous passez des heures à trier pour trouver 2 alternants ou stagiaires vraiment adaptés.</p>
+</div>
+
+<div class="arg-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-bottom:1.2rem;">
+  <div class="glass-card">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">⏱️</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">Zéro tri. Zéro perte de temps.</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">NOA vous envoie uniquement des alternants et stagiaires qui matchent vos critères ET votre culture d'entreprise. Plus de candidatures fantômes, plus de profils envoyés par erreur.</p>
+  </div>
+  <div class="glass-card">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🧠</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">Au-delà du CV.</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Nos algorithmes analysent la personnalité, les valeurs et les ambitions. Vous recrutez quelqu'un qui s'intégrera vraiment — pas juste quelqu'un qui a le bon diplôme.</p>
+  </div>
+  <div class="glass-card">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">📉</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">Moins de turnover.</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Un alternant bien matché reste. Un alternant mal recruté part au bout de 3 mois — et vous recommencez tout. NOA réduit ce risque dès le départ.</p>
+  </div>
+  <div class="glass-card">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🏝️</span>
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">100% La Réunion.</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Aucune plateforme nationale ne connaît votre marché. NOA est conçue pour le tissu économique réunionnais — des candidats locaux, disponibles, ancrés dans leur territoire.</p>
+  </div>
+</div>
+
+<!-- Conclusion entreprise -->
+<div style="text-align:center; padding:1.5rem; border-radius:18px; background:rgba(74,124,89,0.15); border:1px solid rgba(74,124,89,0.35);">
+  <p style="font-family:'Playfair Display',serif; font-size:1rem; color:#fff; margin-bottom:0.4rem;">Ce que les autres plateformes vous offrent gratuitement coûte cher en temps de tri.</p>
+  <p style="font-size:0.82rem; color:rgba(255,255,255,0.65);">NOA, c'est l'investissement qui vous fait gagner du temps — et trouver le bon profil du premier coup.</p>
+</div>
+```
+
+  </section>
+
+  <!-- POURQUOI NOA — CFA -->
+
+  <section id="pourquoi-cfa">
+    <div class="text-center" style="margin-bottom:2.5rem;">
+      <p class="section-label">CFA & Organismes de formation</p>
+      <h2 style="font-size:1.5rem; margin-bottom:0.5rem;">Votre taux de placement,<br><em style="font-style:italic; color:#C490C8;">votre meilleur argument commercial.</em></h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); max-width:520px; margin:0 auto;">Aujourd'hui, comment vous placez vos apprenants ? Par réseau, par téléphone, par chance ?</p>
+    </div>
+
+```
+<!-- Chiffre choc CFA -->
+<div class="glass-card" style="text-align:center; margin-bottom:2rem; background:rgba(17,103,106,0.20); border-color:rgba(17,103,106,0.50);">
+  <p style="font-family:'Playfair Display',serif; font-size:3rem; color:#1B6B72; line-height:1;">1 sur 3</p>
+  <p style="font-size:0.88rem; color:rgba(255,255,255,0.75); margin-top:0.5rem;">alternants à La Réunion ne trouve pas d'entreprise d'accueil à temps.<br>Ce chiffre nuit à votre réputation — et à leur avenir.</p>
+</div>
+
+<div class="arg-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-bottom:1.2rem;">
+  <div class="glass-card" style="border-color:rgba(17,103,106,0.40);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">📊</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#1B6B72;">Visibilité totale sur votre cohorte.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">En un coup d'œil, vous savez qui est placé, qui cherche encore, qui est en difficulté. Vous agissez avant qu'il soit trop tard — plus aucun apprenant ne passe entre les mailles.</p>
+  </div>
+  <div class="glass-card" style="border-color:rgba(17,103,106,0.40);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🤝</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#1B6B72;">Un réseau d'entreprises qui vient à vous.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">NOA connecte vos apprenants aux entreprises locales qui cherchent des alternants et des stagiaires. Fini les appels à froid et les emails sans réponse — les mises en relation se font sur la plateforme.</p>
+  </div>
+  <div class="glass-card" style="border-color:rgba(17,103,106,0.40);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🏆</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#1B6B72;">Votre taux de placement devient un atout.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Un apprenant placé = une formation qui recrute. Améliorez vos statistiques de placement et utilisez-les pour attirer les prochaines promotions. NOA vous donne les données pour le prouver.</p>
+  </div>
+  <div class="glass-card" style="border-color:rgba(17,103,106,0.40);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">💡</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#1B6B72;">Un accompagnement pensé pour eux.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Grâce aux quiz NOA Oriente, vos apprenants clarifient leurs ambitions avant même de chercher. Ils arrivent en entreprise avec un projet clair — ce qui rassure les recruteurs.</p>
+  </div>
+</div>
+
+<!-- Conclusion CFA -->
+<div style="text-align:center; padding:1.5rem; border-radius:18px; background:rgba(17,103,106,0.15); border:1px solid rgba(17,103,106,0.40);">
+  <p style="font-family:'Playfair Display',serif; font-size:1rem; color:#fff; margin-bottom:0.4rem;">NOA n'est pas un outil de plus à gérer. C'est le tableau de bord que vous n'aviez pas.</p>
+  <p style="font-size:0.82rem; color:rgba(255,255,255,0.65);">Moins de travail manuel. Plus de placements réussis. Une réputation qui se construit sur des résultats concrets.</p>
+</div>
+```
+
+  </section>
+
+<!-- POURQUOI NOA — ALTERNANTS & STAGIAIRES -->
+
+  <section id="pourquoi-alternant">
+    <div class="text-center" style="margin-bottom:2.5rem;">
+      <p class="section-label">Alternants &amp; Stagiaires</p>
+      <h2 style="font-size:1.5rem; margin-bottom:0.5rem;">Trouve l'entreprise qui te<br><em style="font-style:italic; color:#C490C8;">correspond vraiment.</em></h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); max-width:520px; margin:0 auto;">Postuler partout, ne jamais avoir de réponse, accepter n'importe quoi par peur de ne rien trouver — tu mérites mieux que ça.</p>
+    </div>
+
+```
+<div style="text-align:center; margin-bottom:2rem;">
+  <span style="display:inline-block; padding:0.6rem 1.8rem; border-radius:50px; background:rgba(123,50,132,0.30); border:1.5px solid rgba(196,144,200,0.6); font-family:'Playfair Display',serif; font-size:1rem; color:#fff;">
+    ✦ 100% gratuit pour les alternants et stagiaires
+  </span>
+</div>
+
+<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-bottom:1.2rem;">
+  <div class="glass-card" style="border-color:rgba(123,50,132,0.45);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🎯</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">Un match, pas une liste.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">Fini d'envoyer ton CV dans le vide. NOA analyse ton profil, ta personnalité et tes ambitions pour te proposer les entreprises qui te correspondent — pas les 200 qui recrutent n'importe qui.</p>
+  </div>
+  <div class="glass-card" style="border-color:rgba(123,50,132,0.45);">
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+      <span style="font-size:1.5rem;">🧠</span>
+      <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#C490C8;">Tu n'es pas que ton CV.</div>
+    </div>
+    <p style="font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.7;">NOA prend en compte ta personnalité, ta façon d'apprendre, tes valeurs. Les entreprises te voient pour ce que tu es vraiment — pas juste pour tes notes ou ton école.</p>
+  </div>
+
+
+</div>
+```
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="text-center" style="margin-bottom:2.5rem;">
+      <p class="section-label">Contact</p>
+      <h2 style="font-size:1.5rem; margin-bottom:0.8rem;">Prêt·e à écrire ta nouvelle odyssée ?</h2>
+      <div class="section-divider"></div>
+      <p style="font-size:0.9rem; color:rgba(255,255,255,0.75); max-width:560px; margin:0 auto;">
+        L'application NOA arrive bientôt — matching, candidatures, messagerie et tableau de bord seront directement sur l'appli.<br><br>
+        Tu es alternant·e, stagiaire, une entreprise, un CFA ou un partenaire ? Laisse-nous tes coordonnées et sois parmi les premiers informés du lancement.
+      </p>
+    </div>
+    <div class="contact-form-box" id="formContainer">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" id="fname" placeholder="Votre prénom" />
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" id="lname" placeholder="Votre nom" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="votre@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Vous êtes</label>
+        <select id="profile">
+          <option value="" disabled selected>Sélectionnez votre profil</option>
+          <option>Une entreprise / recruteur</option>
+          <option>Un alternant / stagiaire</option>
+          <option>Un CFA / organisme de formation</option>
+          <option>Un partenaire institutionnel</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="message" placeholder="Décrivez votre besoin ou posez votre question…"></textarea>
+      </div>
+      <button class="glass-btn" onclick="handleSubmit()">Envoyer le message →</button>
+      <div class="form-success" id="formSuccess">
+        <span class="check">✦</span>
+        <p>Message envoyé avec succès</p>
+        <small>Nous vous répondrons dans les plus brefs délais.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-logo"><img src="data:image/png;base64,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" alt="NOA" /></div>
+    <div class="footer-links">
+      <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">À propos</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Comment ça marche</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('roles').scrollIntoView({behavior:'smooth'})">Pour qui</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+    </div>
+    <div class="divider"></div>
+    <p>© 2026 Noa — Nelsy MOUTAYE</p>
+    <p>noa-talent.fr · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7a4a8a9b3a6a4b387a9a8a6eab3a6aba2a9b3e9a1b5">[email&#160;protected]</a> · La Réunion 974</p>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+function handleSubmit() {
+var fname = document.getElementById(‘fname’).value.trim();
+var email = document.getElementById(‘email’).value.trim();
+var message = document.getElementById(‘message’).value.trim();
+if (!fname || !email || !message) {
+var fields = document.querySelectorAll(‘input, select, textarea’);
+fields.forEach(function(f) {
+if (!f.value.trim()) {
+f.style.borderColor = ‘rgba(123,50,132,0.9)’;
+setTimeout(function() { f.style.borderColor = ‘’; }, 1500);
+}
