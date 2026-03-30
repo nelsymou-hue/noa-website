@@ -420,12 +420,34 @@ margin-bottom: 1.5rem;
 .text-center .section-divider { margin: 0 auto 1.5rem; }
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
-nav { padding: 1rem; }
-.nav-links { display: none; }
-.two-col, .steps-grid, .roles-grid, .valeurs-grid { grid-template-columns:
-1fr; }
-.form-row { grid-template-columns: 1fr; }
-footer .footer-links { flex-direction: column; gap: 1rem; }
+ nav { padding: 0.8rem 1rem; }
+ .nav-links { display: none; }
+ .two-col, .steps-grid, .roles-grid, .valeurs-grid { grid-template-columns: 1fr; }
+ .form-row { grid-template-columns: 1fr; }
+ footer .footer-links { flex-direction: column; gap: 0.8rem; }
+ section { padding: 2.5rem 1.2rem; }
+ #hero { padding: 3.5rem 1.2rem 2rem; min-height: auto; }
+ #hero h1 { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+ #hero img.logo { width: 200px; }
+ #hero p.desc { font-size: 0.88rem; }
+ .beta-badge { font-size: 0.7rem; }
+ .role-tabs { flex-direction: column; align-items: center; gap: 0.5rem; }
+ .role-tab { width: 80%; text-align: center; font-size: 0.75rem; }
+ .glass-card { padding: 1.2rem; }
+ .valeurs-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+ .arg-grid { grid-template-columns: 1fr !important; }
+ .contact-form-box { padding: 1.2rem; }
+ h2 { font-size: 1.3rem !important; }
+ .roles-grid { grid-template-columns: 1fr; gap: 1rem; }
+ .steps-grid { gap: 0.8rem; }
+ .feature-item .icon { font-size: 1rem; }
+}
+@media (max-width: 480px) {
+ #hero h1 { font-size: 1.6rem; }
+ #hero img.logo { width: 150px; }
+ .valeurs-grid { grid-template-columns: 1fr 1fr; }
+ .role-tab { width: 90%; }
+ h2 { font-size: 1.2rem !important; }
 }
 /* ═══ FORCE BLANC SUR TOUT ═══ */
 h1, h2, h3, h4, h5, h6 { color: #ffffff !important; }
@@ -557,7 +579,7 @@ précise tes ambitions.</div>
 <div class="glass-card text-center">
 <div class="step-num">03</div>
 <div class="step-title">Lance l'aventure</div>
-<div class="step-desc">Prends contact, postule, et mets toutes les chancesde ton côté pour démarrer ton alternance ou ton stage.</div>
+<div class="step-desc">Prends contact, postule, et mets toutes les chances de ton côté pour démarrer ton alternance ou ton stage.</div>
 </div>
 </div>
 </section>
@@ -884,8 +906,7 @@ posez votre question…"></textarea>
 color:rgba(196,144,200,0.85); margin-bottom:0.8rem; letter-spacing:0.1em;">
 Liste d'attente ouverte · Places bêta limitées
 </p>
-<button type="submit" class="glass-btn" style="width:50%; padding:0.7rem 1rem;
-font-size:0.72rem; letter-spacing:0.15em;">Contact Noa ✨</button>
+<button type="submit" class="glass-btn" style="width:auto; padding:0.6rem 1.8rem; font-size:0.85rem; letter-spacing:0.05em; text-transform:none;">Contact Noa ✨</button>
 </div>
 </section>
 <!-- FOOTER -->
