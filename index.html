@@ -358,6 +358,23 @@ opacity: 1;
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus { border-color: rgba(123,50,132,0.8); }
+/* ── FIX AUTOFILL NAVIGATEUR (Chrome, Edge, Safari) ── */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group textarea:-webkit-autofill,
+.form-group textarea:-webkit-autofill:hover,
+.form-group textarea:-webkit-autofill:focus,
+.form-group select:-webkit-autofill,
+.form-group select:-webkit-autofill:hover,
+.form-group select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(15,20,50,0.85) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(15,20,50,0.85) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #ffffff;
+  border-color: rgba(215,215,228,0.45) !important;
+}
 .form-group textarea { resize: none; min-height: 110px; }
 .form-success { display: none; text-align: center; padding: 2rem; }
 .form-success .check { font-size: 2rem; color: #C490C8; display: block;
