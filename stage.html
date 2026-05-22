@@ -610,8 +610,7 @@
   .hero-sub { animation: fadeUp 0.8s 0.2s ease forwards; opacity: 0; }
   .hero-profiles { animation: fadeUp 0.8s 0.4s ease forwards; opacity: 0; }
 
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
+  
     .nav-links { display: none; }
     .hero, .steps-section, .answer-section, .quiz-section, .faq-section, .cta-section, .stats-section, .img-section { padding-left: 1.5rem; padding-right: 1.5rem; }
     .steps-grid, .faq-grid, .stats-grid { grid-template-columns: 1fr; }
@@ -736,6 +735,99 @@
   }
 
 
+
+
+  /* ===== RESPONSIVE MOBILE & TABLETTE ===== */
+
+  /* Tablette (max 1024px) */
+  @media (max-width: 1024px) {
+    .hero { padding: 4rem 3rem !important; }
+    .steps-section { padding: 3rem 3rem !important; max-width: 100% !important; }
+    .answer-section { padding: 2rem 3rem !important; }
+    .quiz-section { padding: 3rem 3rem !important; max-width: 100% !important; }
+    .faq-section { padding: 3rem 3rem !important; max-width: 100% !important; }
+    .cta-section { padding: 3rem 3rem !important; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .quiz-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .faq-grid { grid-template-columns: 1fr !important; }
+    .hero-3d { width: 360px !important; height: 360px !important; right: 2rem !important; }
+    .hero-img-wrap { width: 300px !important; right: 2rem !important; }
+  }
+
+  /* Mobile (max 768px) */
+  @media (max-width: 768px) {
+    /* Nav */
+    nav { padding: 1rem 1.5rem !important; }
+    .nav-links { display: none !important; }
+    .nav-cta { font-size: 0.75rem !important; padding: 0.4rem 0.9rem !important; }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 1.5rem 2rem !important;
+      min-height: auto !important;
+      text-align: center !important;
+    }
+    .hero-title { font-size: clamp(1.6rem, 7vw, 2.4rem) !important; }
+    .hero-sub { font-size: 0.95rem !important; max-width: 100% !important; }
+    .hero-profiles { justify-content: center !important; flex-wrap: wrap !important; }
+    .hero-3d { display: none !important; }
+    .hero-img-wrap { display: none !important; }
+
+    /* Sections padding */
+    .hero, .steps-section, .answer-section, .quiz-section,
+    .faq-section, .cta-section, .stats-section, .img-section {
+      padding-left: 1.2rem !important;
+      padding-right: 1.2rem !important;
+    }
+    .steps-section { max-width: 100% !important; padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    .quiz-section { max-width: 100% !important; }
+    .faq-section { max-width: 100% !important; }
+
+    /* Grilles */
+    .steps-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    .quiz-grid { grid-template-columns: 1fr !important; gap: 0.8rem !important; }
+    .faq-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    .answer-steps { grid-template-columns: 1fr !important; gap: 0.6rem !important; }
+    .img-grid { grid-template-columns: 1fr !important; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+
+    /* Cards */
+    .step-card { padding: 1.5rem !important; }
+    .step-num { font-size: 2rem !important; }
+    .quiz-card { padding: 1rem !important; }
+    .answer-box { padding: 1.5rem !important; }
+    .cta-box { padding: 1.5rem !important; }
+
+    /* Typographie */
+    .section-title { font-size: 1.4rem !important; line-height: 1.3 !important; }
+    .section-label { font-size: 0.8rem !important; }
+    .cta-box h2 { font-size: 1.4rem !important; }
+
+    /* FAQ flip cards */
+    .flip-card { height: auto !important; min-height: 100px !important; }
+    .flip-card-front { padding: 1rem !important; }
+    .flip-card-back { padding: 1rem !important; }
+    .flip-card-front h3 { font-size: 0.85rem !important; }
+
+    /* Profile pills */
+    .profile-pill { font-size: 0.75rem !important; padding: 0.5rem 1rem !important; }
+
+    /* Bouton CTA */
+    .btn-cta { font-size: 0.9rem !important; padding: 0.8rem 1.5rem !important; width: 100% !important; text-align: center !important; box-sizing: border-box !important; }
+  }
+
+  /* Petit mobile (max 480px) */
+  @media (max-width: 480px) {
+    .hero { padding: 2.5rem 1rem 1.5rem !important; }
+    .hero-title { font-size: 1.5rem !important; }
+    .steps-section, .quiz-section, .faq-section, .cta-section {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .stats-grid { grid-template-columns: 1fr !important; }
+    .section-title { font-size: 1.2rem !important; }
+    nav { padding: 0.8rem 1rem !important; }
+  }
 
 </style>
 </head>
