@@ -276,6 +276,7 @@
   }
 
   .section-title {
+    font-style: italic;
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
     font-weight: 900;
@@ -283,7 +284,7 @@
     line-height: 1.2;
   }
 
-  .section-title em { font-style: italic; color: var(--violet); }
+  .section-title em { font-style: italic; color: #FFFFFF; }
 
   .steps-grid {
     display: grid;
@@ -799,7 +800,8 @@
     .cta-box { padding: 1.5rem !important; }
 
     /* Typographie */
-    .section-title { font-size: 1.4rem !important; line-height: 1.3 !important; }
+    .section-title {
+    font-style: italic; font-size: 1.4rem !important; line-height: 1.3 !important; }
     .section-label { font-size: 0.8rem !important; }
     .cta-box h2 { font-size: 1.4rem !important; }
 
@@ -825,9 +827,11 @@
       padding-right: 1rem !important;
     }
     .stats-grid { grid-template-columns: 1fr !important; }
-    .section-title { font-size: 1.2rem !important; }
+    .section-title {
+    font-style: italic; font-size: 1.2rem !important; }
     nav { padding: 0.8rem 1rem !important; }
   }
+
 
 </style>
 </head>
@@ -888,7 +892,7 @@
 <!-- ÉTAPES -->
 <section class="steps-section">
   <p class="section-label">Le processus</p>
-  <h2 class="section-title">Les 4 étapes pour trouver<br><em>ton stage à La Réunion</em></h2>
+  <h2 class="section-title">Les 4 étapes pour trouver <em>ton stage à La Réunion</em></h2>
 
   <div class="steps-grid">
     <div class="step-card glow-card">
@@ -929,7 +933,7 @@
 <!-- QUIZ -->
 <section class="quiz-section">
   <p class="section-label">Le matching</p>
-  <h2 class="section-title">4 quiz pour un matching<br><em>qui te ressemble vraiment</em></h2>
+  <h2 class="section-title">4 quiz pour un matching <em>qui te ressemble vraiment</em></h2>
 
   <div class="quiz-grid">
     <div class="quiz-card glow-card">
@@ -958,7 +962,7 @@
 <!-- FAQ CONCURRENTS -->
 <section class="faq-section">
   <p class="section-label">NOA vs les autres</p>
-  <h2 class="section-title">Comment NOA se différencie<br><em>des autres plateformes ?</em></h2>
+  <h2 class="section-title">Comment NOA se différencie <em>des autres plateformes ?</em></h2>
 
   <div class="faq-grid">
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
@@ -1015,7 +1019,7 @@
 <!-- FAQ QUESTIONS -->
 <section class="faq-section" style="padding-top: 0;">
   <p class="section-label">Questions fréquentes</p>
-  <h2 class="section-title">Ce que tu te<br><em>demandes sûrement</em></h2>
+  <h2 class="section-title">Ce que tu te <em>demandes sûrement</em></h2>
 
   <div class="faq-grid">
 <div class="flip-card" onclick="this.classList.toggle('flipped')">
@@ -1085,6 +1089,40 @@
 <footer>
   <p>© 2026 NOA — Nouvelle Odyssée d'Ambition · noa-match.fr · La Réunion 974</p>
 </footer>
+
+
+<script>
+  // Flip cards avec hauteur dynamique
+  document.querySelectorAll('.flip-card').forEach(function(card) {
+    card.removeAttribute('onclick');
+    card.addEventListener('click', function() {
+      var isFlipped = this.classList.contains('flipped');
+      var inner = this.querySelector('.flip-card-inner');
+      var back = this.querySelector('.flip-card-back');
+      
+      if (!isFlipped) {
+        // On flip : mesurer la hauteur du verso
+        back.style.position = 'absolute';
+        back.style.visibility = 'hidden';
+        back.style.display = 'flex';
+        var backHeight = back.scrollHeight;
+        back.style.position = '';
+        back.style.visibility = '';
+        back.style.display = '';
+        
+        var minHeight = Math.max(130, backHeight + 10);
+        this.style.height = minHeight + 'px';
+        inner.style.height = minHeight + 'px';
+      } else {
+        // On déflip : revenir à la hauteur initiale
+        this.style.height = '130px';
+        inner.style.height = '130px';
+      }
+      
+      this.classList.toggle('flipped');
+    });
+  });
+</script>
 
 </body>
 </html>
