@@ -485,6 +485,13 @@ li { color: #ffffff !important; }
     .roles-grid { grid-template-columns: 1fr !important; }
   }
 
+
+  /* Nav CTA responsive */
+  @media (max-width: 700px) {
+    .nav-cta-desktop { display: none !important; }
+    .nav-cta-mobile { display: block !important; }
+  }
+
 </style>
 
 </head>
@@ -497,16 +504,24 @@ li { color: #ffffff !important; }
 </div>
 <!-- NAV -->
 <div class="z10">
-<nav style="display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; max-width:1200px; margin:0 auto; gap:0.6rem; flex-wrap:nowrap;">
-<a href="/" class="logo"><img src="data:image/png;base64," style="height:36px; width:auto; display:none;"></a>
-<ul class="nav-links nav-badges" style="display:flex; gap:0.5rem; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:nowrap;">
-  <li><a href="javascript:void(0)" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(59,130,246,0.15); border:0.5px solid rgba(59,130,246,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Comment ça marche</a></li>
-  <li><a href="javascript:void(0)" onclick="document.getElementById('roles').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(255,255,255,0.08); border:0.5px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Pour qui</a></li>
-  <li><a href="alternance.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(123,50,132,0.25); border:0.5px solid rgba(123,50,132,0.5); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Alternance 974</a></li>
-  <li><a href="stage.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(201,168,76,0.12); border:0.5px solid rgba(201,168,76,0.4); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Stage 974</a></li>
-  <li><a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(34,197,94,0.12); border:0.5px solid rgba(34,197,94,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Contact</a></li>
-</ul>
-<a href="https://app.noa-match.fr" target="_blank" style="font-size:0.72rem; padding:0.35rem 1rem; border-radius:20px; background:rgba(123,50,132,0.45); border:0.5px solid rgba(215,215,228,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">🚀 Rejoins la bêta</a>
+<nav style="padding:0.8rem 1.5rem; max-width:1200px; margin:0 auto;">
+  <!-- Ligne badges -->
+  <div class="nav-badges-row" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+    <a href="/" class="logo"><img src="data:image/png;base64," style="height:36px; width:auto; display:none;"></a>
+    <ul class="nav-links nav-badges" style="display:flex; gap:0.5rem; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:wrap;">
+      <li><a href="javascript:void(0)" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(59,130,246,0.15); border:0.5px solid rgba(59,130,246,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Comment ça marche</a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('roles').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(255,255,255,0.08); border:0.5px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Pour qui</a></li>
+      <li><a href="alternance.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(123,50,132,0.25); border:0.5px solid rgba(123,50,132,0.5); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Alternance 974</a></li>
+      <li><a href="stage.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(201,168,76,0.12); border:0.5px solid rgba(201,168,76,0.4); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Stage 974</a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(34,197,94,0.12); border:0.5px solid rgba(34,197,94,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Contact</a></li>
+    </ul>
+    <!-- Bouton desktop uniquement -->
+    <a href="https://app.noa-match.fr" target="_blank" class="nav-cta-desktop" style="font-size:0.72rem; padding:0.35rem 1rem; border-radius:20px; background:rgba(123,50,132,0.45); border:0.5px solid rgba(215,215,228,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">🚀 Rejoins la bêta</a>
+  </div>
+  <!-- Bouton mobile centré en dessous -->
+  <div class="nav-cta-mobile" style="display:none; text-align:center; margin-top:0.4rem;">
+    <a href="https://app.noa-match.fr" target="_blank" style="font-size:0.65rem; padding:0.25rem 0.8rem; border-radius:20px; background:rgba(123,50,132,0.45); border:0.5px solid rgba(215,215,228,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">🚀 Rejoins la bêta</a>
+  </div>
 </nav>
 <!-- HERO -->
 <section id="hero"><img class="logo fade-up"
