@@ -995,5 +995,28 @@ onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
 </footer>
 </div>
 <script>
-function handleSubmit() {
-var fname = document.getElementById('fname').v
+function toggleMenu() {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('hamburger-btn');
+  menu.classList.toggle('open');
+  btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+}
+
+function closeMenu() {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('hamburger-btn');
+  menu.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('mobile-menu');
+  var btn = document.getElementById('hamburger-btn');
+  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMenu();
+  }
+});
+</script>
+</body>
+</html>
