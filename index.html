@@ -519,39 +519,32 @@ li { color: #ffffff !important; }
   }
   .mobile-menu {
     display: none;
-    background: rgba(21,36,68,0.97);
+    background: rgba(10,20,50,0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 0;
   }
   .mobile-menu ul {
     list-style: none;
     margin: 0;
-    padding: 0.5rem 1.5rem;
-  }
-  .mobile-menu ul li {
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .mobile-menu ul li:last-child {
-    border-bottom: none;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
   .mobile-menu ul li a {
     display: block;
-    padding: 0.9rem 0;
-    color: rgba(255,255,255,0.85);
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    color: #fff;
     text-decoration: none;
     font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .mobile-menu ul li a.mobile-cta {
-    color: #fff;
-    font-weight: 600;
-    background: rgba(17,103,106,0.45);
-    border: 0.5px solid rgba(17,103,106,0.80);
-    border-radius: 8px;
-    padding: 0.9rem 0;
-    text-align: center;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
   }
   @media (max-width: 768px) {
     .hamburger-btn { display: flex !important; }
@@ -598,10 +591,11 @@ li { color: #ffffff !important; }
 <!-- MENU MOBILE DÉROULANT -->
 <div class="mobile-menu" id="mobile-menu">
   <ul>
-    <li><a href="alternance.html" onclick="closeMenu()" style="border-left: 3px solid rgba(123,50,132,0.85); padding-left: 0.8rem;">Alternant</a></li>
-    <li><a href="stage.html" onclick="closeMenu()" style="border-left: 3px solid rgba(201,168,76,0.85); padding-left: 0.8rem;">Stagiaire</a></li>
-    <li><a href="https://app.noa-match.fr/entreprise" target="_blank" class="mobile-cta" onclick="closeMenu()">Entreprise</a></li>
-    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="color: rgba(34,197,94,0.9);">Contact</a></li>
+    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('roles').scrollIntoView({behavior:'smooth'})">Pour qui</a></li>
+    <li><a href="alternance.html" onclick="closeMenu()">Alternant</a></li>
+    <li><a href="stage.html" onclick="closeMenu()">Stagiaire</a></li>
+    <li><a href="https://app.noa-match.fr/entreprise" target="_blank" onclick="closeMenu()">Entreprise</a></li>
+    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
   </ul>
 </div>
 
