@@ -457,7 +457,7 @@ li { color: #ffffff !important; }
   }
 
   /* Mobile */
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     nav { padding: 0.8rem 1rem !important; flex-wrap: wrap !important; gap: 0.5rem !important; }
     .nav-links:not(.nav-badges) { display: none !important; } .nav-badges { display: flex !important; flex-wrap: wrap !important; gap: 0.4rem !important; }
     section { padding: 2.5rem 1rem !important; }
@@ -487,7 +487,7 @@ li { color: #ffffff !important; }
 
 
   /* Nav CTA responsive */
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     .nav-cta-desktop { display: none !important; }
     .nav-cta-mobile { display: block !important; text-align: center !important; width: 100% !important; }
   }
@@ -543,10 +543,16 @@ li { color: #ffffff !important; }
     text-transform: uppercase;
   }
   .mobile-menu ul li a.mobile-cta {
-    color: rgba(201,168,76,0.9);
+    color: #fff;
     font-weight: 600;
+    background: rgba(123,50,132,0.45);
+    border: 0.5px solid rgba(215,215,228,0.35);
+    border-radius: 8px;
+    padding: 0.9rem 0;
+    text-align: center;
+    letter-spacing: 0.08em;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     .hamburger-btn { display: flex !important; }
     .nav-badges { display: none !important; }
     .nav-cta-desktop { display: none !important; }
@@ -571,17 +577,15 @@ li { color: #ffffff !important; }
   <a href="/" class="logo"><img src="data:image/png;base64," style="height:36px; width:auto; display:none;"></a>
 
   <!-- BADGES (desktop uniquement) -->
-  <ul class="nav-badges nav-links" id="nav-menu" style="display:flex; gap:0.5rem; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:wrap;">
-    <li><a href="javascript:void(0)" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(59,130,246,0.15); border:0.5px solid rgba(59,130,246,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Comment ça marche</a></li>
-    <li><a href="javascript:void(0)" onclick="document.getElementById('roles').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(255,255,255,0.08); border:0.5px solid rgba(255,255,255,0.2); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Pour qui</a></li>
-    <li><a href="alternance.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(123,50,132,0.25); border:0.5px solid rgba(123,50,132,0.5); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Alternance 974</a></li>
-    <li><a href="stage.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(201,168,76,0.12); border:0.5px solid rgba(201,168,76,0.4); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Stage 974</a></li>
+  <ul class="nav-badges nav-links" id="nav-menu" style="display:flex; gap:0.5rem; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:nowrap;">
+    <li><a href="alternance.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(123,50,132,0.25); border:0.5px solid rgba(123,50,132,0.5); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Alternant</a></li>
+    <li><a href="stage.html" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(201,168,76,0.12); border:0.5px solid rgba(201,168,76,0.4); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Stagiaire</a></li>
+    <li><a href="https://app.noa-match.fr/entreprise" target="_blank" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(123,50,132,0.45); border:0.5px solid rgba(215,215,228,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Entreprise</a></li>
     <li><a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:20px; background:rgba(34,197,94,0.12); border:0.5px solid rgba(34,197,94,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">Contact</a></li>
   </ul>
 
-  <!-- BOUTON BÊTA (desktop) + HAMBURGER (mobile) -->
-  <div style="display:flex; align-items:center; gap:0.8rem;">
-    <a href="https://app.noa-match.fr" target="_blank" class="nav-cta-desktop" style="font-size:0.72rem; padding:0.35rem 1rem; border-radius:20px; background:rgba(123,50,132,0.45); border:0.5px solid rgba(215,215,228,0.35); color:#fff; text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">🚀 Rejoins la bêta</a>
+  <!-- HAMBURGER (mobile) -->
+  <div style="display:flex; align-items:center;">
     <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -592,12 +596,10 @@ li { color: #ffffff !important; }
 <!-- MENU MOBILE DÉROULANT -->
 <div class="mobile-menu" id="mobile-menu">
   <ul>
-    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('how').scrollIntoView({behavior:'smooth'})">Comment ça marche</a></li>
-    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('roles').scrollIntoView({behavior:'smooth'})">Pour qui</a></li>
-    <li><a href="alternance.html">Alternance 974</a></li>
-    <li><a href="stage.html">Stage 974</a></li>
+    <li><a href="alternance.html" onclick="closeMenu()">Alternant</a></li>
+    <li><a href="stage.html" onclick="closeMenu()">Stagiaire</a></li>
+    <li><a href="https://app.noa-match.fr/entreprise" target="_blank" class="mobile-cta" onclick="closeMenu()">Entreprise</a></li>
     <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
-    <li><a href="https://app.noa-match.fr" target="_blank" class="mobile-cta">🚀 Rejoins la bêta</a></li>
   </ul>
 </div>
 
