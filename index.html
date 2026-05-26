@@ -525,14 +525,14 @@ li { color: #ffffff !important; }
   .mobile-menu ul {
     list-style: none;
     margin: 0;
-    padding: 0.5rem 0.8rem 1rem 0;
+    padding: 0.75rem 1.5rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    align-items: flex-end;
+    align-items: stretch;
   }
   .mobile-menu ul li a {
-    display: inline-block;
+    display: block;
     padding: 10px 20px;
     border-radius: 30px;
     color: #fff;
@@ -540,6 +540,7 @@ li { color: #ffffff !important; }
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-align: center;
   }
   @media (max-width: 768px) {
     .hamburger-btn { display: flex !important; }
@@ -586,11 +587,11 @@ li { color: #ffffff !important; }
 <!-- MENU MOBILE DÉROULANT -->
 <div class="mobile-menu" id="mobile-menu">
   <ul>
-    <li style="margin-right:0px;"><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('roles').scrollIntoView({behavior:'smooth'})" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.5);">Pour qui</a></li>
-    <li style="margin-right:15px;"><a href="alternance.html" onclick="closeMenu()" style="background:rgba(123,50,132,0.2); border:1px solid #7B3284;">Alternance 974</a></li>
-    <li style="margin-right:30px;"><a href="stage.html" onclick="closeMenu()" style="background:rgba(201,168,76,0.2); border:1px solid #C9A84C;">Stage 974</a></li>
-    <li style="margin-right:45px;"><a href="https://app.noa-match.fr/entreprise" target="_blank" onclick="closeMenu()" style="background:rgba(17,103,106,0.2); border:1px solid #11676A;">Entreprise</a></li>
-    <li style="margin-right:60px;"><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="background:rgba(76,175,80,0.2); border:1px solid #4CAF50;">Contact</a></li>
+    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('roles').scrollIntoView({behavior:'smooth'})" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.5);">Pour qui</a></li>
+    <li><a href="alternance.html" onclick="closeMenu()" style="background:rgba(123,50,132,0.2); border:1px solid #7B3284;">Alternance 974</a></li>
+    <li><a href="stage.html" onclick="closeMenu()" style="background:rgba(201,168,76,0.2); border:1px solid #C9A84C;">Stage 974</a></li>
+    <li><a href="https://app.noa-match.fr/entreprise" target="_blank" onclick="closeMenu()" style="background:rgba(17,103,106,0.2); border:1px solid #11676A;">Entreprise</a></li>
+    <li><a href="javascript:void(0)" onclick="closeMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="background:rgba(76,175,80,0.2); border:1px solid #4CAF50;">Contact</a></li>
   </ul>
 </div>
 
