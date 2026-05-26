@@ -513,7 +513,7 @@
 
   /* FLIP CARDS FAQ */
   .flip-card {
-    height: 130px;
+    height: 165px;
     perspective: 1200px;
     cursor: pointer;
   }
@@ -562,6 +562,16 @@
   .flip-card-front .fq { font-size: 1.4rem; }
   .flip-card-front h3 { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #FFFFFF; line-height: 1.4; margin: 0; }
   .flip-card-front .hint { font-size: 0.65rem; color: rgba(255,255,255,0.35); font-style: italic; }
+
+  /* Cartes multicolores */
+  .faq-grid .flip-card:nth-child(1) .flip-card-front { border-color: rgba(123,50,132,0.60); background: rgba(123,50,132,0.15); }
+  .faq-grid .flip-card:nth-child(2) .flip-card-front { border-color: rgba(17,103,106,0.60); background: rgba(17,103,106,0.15); }
+  .faq-grid .flip-card:nth-child(3) .flip-card-front { border-color: rgba(201,168,76,0.60); background: rgba(201,168,76,0.13); }
+  .faq-grid .flip-card:nth-child(4) .flip-card-front { border-color: rgba(76,175,80,0.60); background: rgba(76,175,80,0.13); }
+  .faq-grid .flip-card:nth-child(5) .flip-card-front { border-color: rgba(59,130,246,0.60); background: rgba(59,130,246,0.13); }
+  .faq-grid .flip-card:nth-child(6) .flip-card-front { border-color: rgba(249,115,22,0.55); background: rgba(249,115,22,0.11); }
+  .faq-grid .flip-card:nth-child(7) .flip-card-front { border-color: rgba(239,68,68,0.55); background: rgba(239,68,68,0.11); }
+  .faq-grid .flip-card:nth-child(8) .flip-card-front { border-color: rgba(6,182,212,0.55); background: rgba(6,182,212,0.11); }
   .flip-card-back p { font-size: 0.95rem; color: rgba(255,255,255,0.92); line-height: 1.7; margin: 0; text-align: center; }
 
   
@@ -683,7 +693,7 @@
     .cta-box h2 { font-size: 1.4rem !important; }
 
     /* FAQ flip cards */
-    .flip-card { height: auto !important; min-height: 100px !important; }
+    .flip-card { height: 165px !important; }
     .flip-card-front { padding: 1rem !important; }
     .flip-card-back { padding: 1rem !important; }
     .flip-card-front h3 { font-size: 0.85rem !important; }
